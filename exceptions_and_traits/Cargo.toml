@@ -1,0 +1,12 @@
+[package]
+name = "exceptions_and_traits"
+version = "0.1.0"
+authors = ["Stefan Müller <s.mueller@it.kls-glt.de>"]
+
+[[bin]]
+name = "exceptions_and_traits"
+path = "src/main.rs"
+doc = false
+
+
+[dependencies]
