@@ -16,8 +16,9 @@
 //! * ein Sensor kann viele [Exception](struct.Exception.html) enthalten
 //!
 //! ### Initalisierung
-//!
 //! * der [Server](struct.Server.html) wird erzeugt
+//! * ein [ShiftRegister](struct.ShiftRegister.html) "leds" wird erzeugt
+//! * ein [ShiftRegister](struct.ShiftRegister.html) "relais" wird erzeugt
 //! * eine [Exception](struct.Exception.html) Wartungsintervall erzeugt
 //! * eine [Action](struct.Action.html) LED::set(3) wird erzeugt
 //! * eine [Action](struct.Action.html) RELAIS::clear(1) wird erzeugt
@@ -71,14 +72,18 @@
 //! ```
 extern crate time;
 
+mod action;
 mod exception;
 mod kombisensor;
 mod sensor;
 mod server;
 mod shift_register;
+mod zone;
 
+pub use self::action::Action;
 pub use self::exception::{Exception, ExceptionType};
 pub use self::kombisensor::Kombisensor;
 pub use self::sensor::Sensor;
 pub use self::server::Server;
 pub use self::shift_register::{ShiftRegister, ShiftRegisterType};
+pub use self::zone::Zone;

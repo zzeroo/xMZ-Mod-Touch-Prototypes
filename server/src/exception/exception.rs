@@ -1,3 +1,5 @@
+use action::Action;
+
 pub enum ExceptionType {
     WartungsIntervall,
     Kabelbruch,
@@ -6,18 +8,17 @@ pub enum ExceptionType {
     SensorMaxAverage2,
 }
 
-pub struct Exception {
+pub struct Exception<'a> {
     exception_type: ExceptionType,
+    pub actions: Vec<Action<'a>>,
 }
 
-impl Exception {
+impl<'a> Exception<'a> {
     pub fn new(exception_type: ExceptionType) -> Self {
         Exception {
             exception_type: exception_type,
+            actions: vec![],
         }
     }
 
-    pub fn actions(&self) {
-
-    }
 }

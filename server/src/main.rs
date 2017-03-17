@@ -1,11 +1,22 @@
 extern crate server;
 
 use std::io::Write;
-use server::{Exception, ExceptionType, Server, Kombisensor};
+use server::{Action, Exception, ExceptionType, Server, ShiftRegister, ShiftRegisterType, Kombisensor};
 
 
 fn main() {
     let mut server = Server::new();
+
+    let mut led = ShiftRegister::new(ShiftRegisterType::LED);
+    let mut relais = ShiftRegister::new(ShiftRegisterType::RELAIS);
+
+    let mut wartungsintervall = Exception::new(ExceptionType::WartungsIntervall);
+    let action_led_wartung_an = Action::new(&led, ShiftRegister::set, 3);
+    let action_relais1_aus = Action::new(&relais, ShiftRegister::clear, 1);
+    wartungsintervall.actions.push(action_led_wartung_an);
+    wartungsintervall.actions.push(action_relais1_aus);
+    server.exceptions.push(wartungsintervall);
+
 
     loop {
         print!(".");

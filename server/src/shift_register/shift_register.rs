@@ -15,4 +15,12 @@ impl ShiftRegister {
             ShiftRegisterType::RELAIS   => ShiftRegister { shift_register_type: shift_register_type },
         }
     }
+
+    pub fn set(&mut self, num: u32) {
+
+    }
+
+    pub fn clear(&mut self, num: u32) {
+
+    }
 }

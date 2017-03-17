@@ -1,16 +1,16 @@
-use kombisensor::Kombisensor;
+use exception::Exception;
 use time;
 
-pub struct Server {
+pub struct Server<'a> {
     pub startup_time: time::Tm,
-    pub kombisensors: Vec<Kombisensor>,
+    pub exceptions: Vec<Exception<'a>>,
 }
 
-impl Server {
+impl<'a> Server<'a> {
     pub fn new() -> Self {
         Server {
             startup_time: time::now(),
-            kombisensors: vec![],
+            exceptions: vec![],
         }
     }
 
