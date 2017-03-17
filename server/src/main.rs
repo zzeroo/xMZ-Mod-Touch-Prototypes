@@ -5,28 +5,19 @@ use server::{Action, Exception, ExceptionType, Server, ShiftRegister, ShiftRegis
 
 
 fn main() {
-    let mut server = Server::new();
-
     let mut led = ShiftRegister::new(ShiftRegisterType::LED);
     let mut relais = ShiftRegister::new(ShiftRegisterType::RELAIS);
 
-    let mut wartungsintervall = Exception::new(ExceptionType::WartungsIntervall);
-    let action_led_wartung_an = Action::new(&led, ShiftRegister::set, 3);
-    let action_relais1_aus = Action::new(&relais, ShiftRegister::clear, 1);
-    wartungsintervall.actions.push(action_led_wartung_an);
-    wartungsintervall.actions.push(action_relais1_aus);
-    server.exceptions.push(wartungsintervall);
-
-
-    loop {
-        print!(".");
-        std::io::stdout().flush();
-        std::thread::sleep(std::time::Duration::from_millis(1000));
+    { // Dieser Block ist nötig um den ShiftRegistern eine längere Livetime zu geben
+        let mut server = Server::new();
+        let mut wartungsintervall = Exception::new(ExceptionType::WartungsIntervall);
+        let action_led_wartung_an = Action::new(&led, ShiftRegister::set, 3);
+        let action_relais1_aus = Action::new(&relais, ShiftRegister::clear, 1);
+        wartungsintervall.actions.push(action_led_wartung_an);
+        wartungsintervall.actions.push(action_relais1_aus);
+        server.exceptions.push(wartungsintervall);
+        
     }
-
-    // for exception in exceptions {
-    //     exception.actions();
-    // }
 
 
     //
