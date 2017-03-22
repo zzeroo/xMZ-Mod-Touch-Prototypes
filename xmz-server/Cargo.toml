@@ -1,0 +1,11 @@
+[package]
+name = "xmz-server"
+version = "0.1.0"
+authors = ["Stefan Müller <s.mueller@it.kls-glt.de>"]
+
+
+[[bin]]
+name = "xmz-server-bin"
+path = "src/main.rs"
+
+[dependencies]

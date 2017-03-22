@@ -1,9 +1,12 @@
 use exception::Exception;
 use time;
+use zone::Zone;
+
 
 pub struct Server<'a> {
     pub startup_time: time::Tm,
     pub exceptions: Vec<Exception<'a>>,
+    pub zones: Vec<Zone>,
 }
 
 impl<'a> Server<'a> {
@@ -11,6 +14,7 @@ impl<'a> Server<'a> {
         Server {
             startup_time: time::now(),
             exceptions: vec![],
+            zones: vec![],
         }
     }
 

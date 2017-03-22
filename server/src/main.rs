@@ -1,7 +1,7 @@
 extern crate server;
 
 use std::io::Write;
-use server::{Action, Exception, ExceptionType, Server, ShiftRegister, ShiftRegisterType, Kombisensor};
+use server::{Action, Exception, ExceptionType, Server, ShiftRegister, ShiftRegisterType, Kombisensor, Zone};
 
 
 fn main() {
@@ -16,7 +16,8 @@ fn main() {
         wartungsintervall.actions.push(action_led_wartung_an);
         wartungsintervall.actions.push(action_relais1_aus);
         server.exceptions.push(wartungsintervall);
-        
+
+        let zone1 = Zone::new();
     }
 
 
