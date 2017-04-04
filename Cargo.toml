@@ -1,0 +1,10 @@
+[package]
+name = "xMZ-Mod-Touch-Prototypes"
+version = "0.0.1"
+
+[workspace]
+members = [
+  "exceptions_and_traits",
+  "server",
+  "xmz-server",
+]

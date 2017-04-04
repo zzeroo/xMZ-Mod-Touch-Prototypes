@@ -39,7 +39,7 @@
 //! * Kombisensor1 wird Sensor CO hinzugefügt
 //! * Zone1 wird Kombisensor1 hinzugefügt
 //!
-//! ```
+//! ```pseudo
 //! Server {
 //!   Exceptions [
 //!     Exception::WartungsInterval {
